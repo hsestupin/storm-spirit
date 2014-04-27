@@ -14,8 +14,13 @@ Further just execute the following code:
 (storm-spirit.core/graphviz topology)
 ```
 
+And you will see:
+![alt tag](vertical-graph.png)
+
 Also by default it draws vertical graph but you could specify the direction like this (see http://www.graphviz.org/content/attrs#drankdir):
 
 ``` clojure
 (storm-spirit.core/graphviz {:rankdir :LR})
 ```
+Which produces the following image:
+![alt tag](horizontal-graph.png)
