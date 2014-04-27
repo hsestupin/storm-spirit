@@ -37,9 +37,14 @@
 
 (defn- dot-digraph
   "Makes a digraph named 'name out of the input lines"
-  [name & lines]
+  [graph-name rankdir & lines]
   (dot
-    (str "digraph " name " {") lines "}"))
+    (str "digraph " graph-name
+         (if rankdir
+           (str " {rankdir=\"" (name rankdir) "\"")
+           " {"))
+    lines
+    "}"))
 
 (defn- nice-class-name
   [obj]
@@ -97,9 +102,9 @@
     (fn [bolt-spec]
       (let [id (key bolt-spec)
             bolt (val bolt-spec)
-            inputs (clojurify-structure (->> bolt
-                                             ^ComponentCommon (.get_common)
-                                             (.get_inputs)))]
+            inputs (->> bolt
+                        (.get_common)
+                        (.get_inputs))]
         (map
           (fn [input]
             (let [from (key input)
@@ -117,16 +122,17 @@
 
 (defn topology-to-dot
   "Takes a topology and converts it to a dot digraph"
-  [^StormTopology topology]
-  (let [spouts (clojurify-structure (.get_spouts topology))
-        bolts (clojurify-structure (.get_bolts topology))]
-    (dot-digraph "topology"
+  [^StormTopology topology rankdir]
+  (let [spouts (.get_spouts topology)
+        bolts (.get_bolts topology)]
+    (dot-digraph "topology" rankdir
                  (label-spouts spouts)
                  (label-bolts bolts)
                  (draw-connections bolts))))
 
 (defn dot-to-png ^URL
   ([dot-str ^File file]
+   (print "Printing graph: \n" dot-str)
    (let [file-name (.toString file)
          png-file-name (str file-name ".png")]
      (spit file dot-str)
@@ -137,9 +143,15 @@
   ([dot-str]
    (dot-to-png dot-str (File/createTempFile "-fs-" ".dot"))))
 
-(defn visualize-topology
-  [topology]
+(defmulti visualize-topology :view-as)
+
+(defmethod visualize-topology :graphviz
+  [{:keys [topology rankdir]}]
   (browse/browse-url
     (str (dot-to-png
            (topology-to-dot
-             topology)))))
+             topology rankdir)))))
+
+(defn graphviz [topology & [args]]
+  (visualize-topology
+    (conj {:view-as :graphviz :topology topology} args)))

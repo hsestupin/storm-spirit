@@ -1,14 +1,21 @@
 # storm-spirit
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure library designed to help you better understand your <a href="https://github.com/apache/incubator-storm">Storm</a> topology visualizing it.
+At this moment the only one visualization way is supported - <a href="http://www.graphviz.org/">graphviz</a>.
 
 ## Usage
 
-FIXME
+Assume that var `topology` holds your topology built something
+<a href="https://github.com/hsestupin/storm-spirit/blob/master/test/storm_spirit/topology_example.clj#L45">like that</a>.
+For building graph views you have to install graphviz tool (http://www.graphviz.org/Download.php).
+Further just execute the following code:
 
-## License
+``` clojure
+(storm-spirit.core/graphviz topology)
+```
 
-Copyright © 2014 FIXME
+Also by default it draws vertical graph but you could specify the direction like this (see http://www.graphviz.org/content/attrs#drankdir):
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+``` clojure
+(storm-spirit.core/graphviz {:rankdir :LR})
+```
