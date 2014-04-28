@@ -3,14 +3,16 @@
             [storm-spirit.core :refer :all])
   (:use [storm-spirit.topology-example]))
 
-;(deftest a-test
-;  (testing "FIXME, I fail."
-;    (is (= 0 1))))
+(def t (new-topology))
+
+(deftest label-node-test
+  (testing "FIXME, I fail."
+    (is (= 0 1))))
 
 (defn v1 []
-  (graphviz (new-topology)))
+  (visualize-with-graphviz t))
 
 (defn v2 []
-  (graphviz (new-topology) {:rankdir :LR}))
+  (visualize-with-graphviz t {:rankdir :LR}))
 
 
