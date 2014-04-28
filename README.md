@@ -30,10 +30,10 @@ Also by default it draws vertical graph but you could specify the direction like
 
 ``` clojure
 ; using wrapper
-(storm-spirit.core/visualize-with-graphviz topology {:graph-attrs {:rankdir :RL}})
+(storm-spirit.core/visualize-with-graphviz topology {:graph-attrs {:rankdir :LR}})
 ; or multimethod call
 (storm-spirit.core/visualize {:view-format :graphviz :topology topology
-            :graph-attrs {:rankdir :RL}})
+            :graph-attrs {:rankdir :LR}})
 ```
 Which produces the following image:
 ![alt tag](horizontal-graph.png)
