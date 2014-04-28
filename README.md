@@ -19,7 +19,7 @@ Lets assume that var `topology` holds your topology built something [like that](
 ; using wrapper
 (storm-spirit.core/visualize-with-graphviz topology)
 ; or multimethod call
-(storm-spirit.core/visualize {:view-format :graphviz :topology t})
+(storm-spirit.core/visualize {:view-format :graphviz :topology topology})
 ```
 
 And you will see:
