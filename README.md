@@ -3,6 +3,20 @@
 A Clojure library designed to help you better understand your <a href="https://github.com/apache/incubator-storm">Storm</a> topology visualizing it.
 At this moment the only one visualization way is supported - <a href="http://www.graphviz.org/">graphviz</a>.
 
+## Dependency
+
+``` clojure
+[org.clojars.hsestupin/overspec "0.1.1"]
+```
+
+```xml
+<dependency>
+  <groupId>org.clojars.hsestupin</groupId>
+  <artifactId>storm-spirit</artifactId>
+  <version>0.1.0</version>
+</dependency>
+```
+
 ## Usage
 
 Use of this project requires that [Graphviz](http://www.graphviz.org) is installed, which can be checked by running `dot -V` at the command line.  If it's not installed, you can do the following:
