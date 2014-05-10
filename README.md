@@ -6,7 +6,7 @@ At this moment the only one visualization way is supported - <a href="http://www
 ## Dependency
 
 ``` clojure
-[org.clojars.hsestupin/overspec "0.1.1"]
+[org.clojars.hsestupin/storm-spirit "0.1.0"]
 ```
 
 ```xml
