@@ -1,4 +1,4 @@
-(defproject storm-spirit "0.1.0"
+(defproject org.clojars.hsestupin/storm-spirit "0.1.0"
   :description "Apache Storm visualization tools"
   :url "https://github.com/hsestupin/storm-spirit"
   :license {:name "Eclipse Public License"
