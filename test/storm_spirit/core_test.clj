@@ -5,9 +5,9 @@
 
 (def t (new-topology))
 
-(deftest label-node-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+;(deftest label-node-test
+;  (testing "FIXME, I fail."
+;    (is (= 0 1))))
 
 (defn v1 []
   (visualize-with-graphviz t))
